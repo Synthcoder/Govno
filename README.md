@@ -2,32 +2,24 @@ using System;
 
 class Program
 {
+    // Процедура добавления цифры справа
+    static void AddRightDigit(int D, ref int K)
+    {
+        K = K * 10 + D;
+    }
+
     static void Main()
     {
-        Console.Write("Введите количество чисел N: ");
-        int N = int.Parse(Console.ReadLine());
-        int[] numbers = new int[N];
+        int K = 123;    // Исходное число
+        int D1 = 4;     // Первая добавляемая цифра
+        int D2 = 7;     // Вторая добавляемая цифра
 
-        // Вводим массив чисел
-        Console.WriteLine("Введите числа по одному в строке:");
-        for (int i = 0; i < N; i++)
-        {
-            numbers[i] = int.Parse(Console.ReadLine());
-        }
+        // Добавляем первую цифру и выводим результат
+        AddRightDigit(D1, ref K);
+        Console.WriteLine($"После добавления {D1}: {K}");
 
-        int K = 0; // Счётчик чётных чисел
-
-        Console.WriteLine("Чётные числа из набора:");
-        for (int i = 0; i < N; i++)
-        {
-            if (numbers[i] % 2 == 0)
-            {
-                Console.Write(numbers[i] + " ");
-                K++;
-            }
-        }
-
-        Console.WriteLine(); // Перевод строки после вывода чисел
-        Console.WriteLine("Количество чётных чисел: " + K);
+        // Добавляем вторую цифру и выводим результат
+        AddRightDigit(D2, ref K);
+        Console.WriteLine($"После добавления {D2}: {K}");
     }
 }
