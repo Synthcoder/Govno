@@ -2,24 +2,31 @@ using System;
 
 class Program
 {
-    // Процедура добавления цифры справа
-    static void AddRightDigit(int D, ref int K)
+    // Функция проверки степени 5
+    static bool IsPower5(int K)
     {
-        K = K * 10 + D;
+        if (K < 1)
+            return false;
+        while (K % 5 == 0)
+        {
+            K /= 5;
+        }
+        return K == 1;
     }
 
     static void Main()
     {
-        int K = 123;    // Исходное число
-        int D1 = 4;     // Первая добавляемая цифра
-        int D2 = 7;     // Вторая добавляемая цифра
+        int[] numbers = new int[10];
+        int count = 0;
 
-        // Добавляем первую цифру и выводим результат
-        AddRightDigit(D1, ref K);
-        Console.WriteLine($"После добавления {D1}: {K}");
+        Console.WriteLine("Введите 10 положительных целых чисел:");
+        for (int i = 0; i < 10; i++)
+        {
+            numbers[i] = int.Parse(Console.ReadLine());
+            if (IsPower5(numbers[i]))
+                count++;
+        }
 
-        // Добавляем вторую цифру и выводим результат
-        AddRightDigit(D2, ref K);
-        Console.WriteLine($"После добавления {D2}: {K}");
+        Console.WriteLine($"Количество степеней числа 5: {count}");
     }
 }
