@@ -2,32 +2,31 @@ using System;
 
 class Program
 {
-    // Функция для вычисления A^B, возвращает 0 если A <= 0
-    static double Power1(double A, double B)
-    {
-        if (A <= 0)
-            return 0;
-        return Math.Exp(B * Math.Log(A));
-    }
-
     static void Main()
     {
-        // Ввод исходных данных
-        Console.WriteLine("Введите значения A, B, C и P через пробел:");
-        string[] input = Console.ReadLine().Split();
-        double A = double.Parse(input[0]);
-        double B = double.Parse(input[1]);
-        double C = double.Parse(input[2]);
-        double P = double.Parse(input[3]);
+        double R = Convert.ToDouble(Console.ReadLine());
+        int N = Convert.ToInt32(Console.ReadLine());
 
-        // Вычисления
-        double AP = Power1(A, P);
-        double BP = Power1(B, P);
-        double CP = Power1(C, P);
+        double[] a = new double[N];
+        for (int i = 0; i < N; i++)
+        {
+            a[i] = Convert.ToDouble(Console.ReadLine());
+        }
 
-        // Вывод результатов
-        Console.WriteLine($"A^P = {AP}");
-        Console.WriteLine($"B^P = {BP}");
-        Console.WriteLine($"C^P = {CP}");
+        int bI = 0;
+        double bD = (a[0] + a[1]) - R;
+
+        for (int i = 1; i < N - 1; i++)
+        {
+            double sum = a[i] + a[i + 1];
+            double diff = sum - R;
+            if (diff < bD)
+            {
+                bD = diff;
+                bI = i;
+            }
+        }
+
+        Console.WriteLine(a[bI] + " " + a[bI + 1]);
     }
 }
