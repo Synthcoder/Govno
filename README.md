@@ -85,3 +85,25 @@ if (saveFileDialog1.ShowDialog() == DialogResult.OK)
     else if (radioButton2.Checked) // RTF 
     { 
         // Сохранить как форматированный RTF         richTextBox1.SaveFile(fileName + ".rtf", RichTextBoxStreamType.RichText); 
+} 
+} 
+ 
+	• 	Для кнопки открыть следующий код 
+ 
+if (openFileDialog1.ShowDialog() == DialogResult.OK) 
+{ 
+    string fileName = openFileDialog1.FileName;     if (fileName.EndsWith(".rtf", StringComparison.OrdinalIgnoreCase)) 
+    { 
+        richTextBox1.LoadFile(fileName, RichTextBoxStreamType.RichText); 
+    }     else 
+    { 
+        richTextBox1.Text = File.ReadAllText(fileName, Encoding.UTF8); 
+    } 
+} 
+ 
+1.	Выберите Courier New и 10  нажмите «Форматировать» текст должен стать моноширинным и мелким. 
+2.	Выберите 14, выделите первую строку  «Заголовок» она должна стать жирной и курсивом. 
+3.	Выделите 3–4 строки нажмите «Список»  перед каждой появится «• ». 
+4.	Сохраните как TXT  получите .txt-файл без форматирования. 
+5.	Сохраните как RTF  получите .rtf с форматированием (жирный, шрифты и т.д.). 
+ 
